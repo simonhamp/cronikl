@@ -32,10 +32,6 @@ If you would like to sponsor Cronikl's development, please visit my [GitHub Spon
 
 Cronikl is an open-source project and contributions are welcome! Feel free to open an issue or submit a pull request if you have a way to improve the app.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
 ## License
 
 Cronikl is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
