@@ -143,7 +143,7 @@
                 </div>
             @endif
 
-            <div class="mt-4 grid grid-cols-3" wire:poll.5000ms>
+            <div class="mt-4 grid grid-cols-3" wire:poll.visible.5000ms>
                 <div class="col-span-2">
                     @if(count($this->nextRuns) > 0)
                         <span class="font-semibold">Next Expected Runs (UTC):</span>
