@@ -92,7 +92,7 @@ class NewJob extends Component
         $this->emitUp('jobCreated');
     }
 
-    protected function getCronExpression()
+    protected function getCronExpression(): string
     {
         if ($this->frequency !== 'custom') {
             return $this->frequency === 'minutely' ? '* * * * *' : "@{$this->frequency}";
