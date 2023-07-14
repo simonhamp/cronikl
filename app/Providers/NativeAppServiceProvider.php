@@ -30,7 +30,11 @@ class NativeAppServiceProvider
 
         Window::open()
             ->width(1080)
-            ->height(800);
+            ->minWidth(1080)
+            ->height(800)
+            ->minHeight(800)
+            ->showDevTools(false)
+            ->maximizable(false);
 
         /**
             Dock::menu(
