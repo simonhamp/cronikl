@@ -60,14 +60,23 @@
                                     </svg>
                                 </button>
 
-                                    <button type="button" class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="getJobLog('{{ $job->id }}')" @click="open = false">Show last output</button>
-{{--                                    <div><button type="button" class="w-full">Show Next Runs</button></div>--}}
                                 <div class="rounded-lg bg-white shadow-lg right-0 z-10 w-52 origin-top-right flex flex-col absolute"
                                      x-cloak x-show="open" x-transition @click.outside="close()">
+                                    <button type="button" class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1"
+                                            wire:click="getJobLog('{{ $job->id }}')" @click="close()">
+                                        Show last output
+                                    </button>
+
                                     @if ($job->active)
-                                        <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="pauseJob('{{ $job->id }}')" @click="open = false">Pause task</button>
+                                        <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1"
+                                                wire:click="pauseJob('{{ $job->id }}')" @click="close()">
+                                            Pause task
+                                        </button>
                                     @else
-                                        <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="resumeJob('{{ $job->id }}')" @click="open = false">Start task</button>
+                                        <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1"
+                                                wire:click="resumeJob('{{ $job->id }}')" @click="close()">
+                                            Start task
+                                        </button>
                                     @endif
 
                                     <hr>
