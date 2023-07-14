@@ -31,7 +31,7 @@ class Scheduler extends Component
     {
         $this->jobs->forget($id);
 
-        Storage::put('jobs', $this->jobs->toJson());
+        $this->saveJobs();
     }
 
     public function pauseJob($id): void
@@ -40,7 +40,7 @@ class Scheduler extends Component
         $job['active'] = false;
         $this->jobs->put($id, $job);
 
-        Storage::put('jobs', $this->jobs->toJson());
+        $this->saveJobs();
     }
 
     public function resumeJob($id): void
@@ -49,12 +49,17 @@ class Scheduler extends Component
         $job['active'] = true;
         $this->jobs->put($id, $job);
 
-        Storage::put('jobs', $this->jobs->toJson());
+        $this->saveJobs();
     }
 
     public function getJobLog($id)
     {
         $this->currentJob = $this->jobs->get($id);
         $this->jobLog = Storage::get("{$id}.log");
+    }
+
+    private function saveJobs()
+    {
+        Storage::put('jobs', $this->jobs->toJson(JSON_PRETTY_PRINT));
     }
 }
