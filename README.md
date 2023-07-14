@@ -12,7 +12,7 @@ It's also a neat little app that lets you manage cron jobs with a simple UI, run
 
 Clone the repository and run `composer install` to install the dependencies.
 
-Then run `copy .env.example .env && php artisan key:generate` to create your `.env` file and generate an application key.
+Then run `cp .env.example .env && php artisan key:generate` to create your `.env` file and generate an application key.
 
 ## Running the app
 
