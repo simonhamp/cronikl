@@ -1,29 +1,34 @@
-<p align="center"><img src="https://raw.githubusercontent.com/simonhamp/cronikl/main/resources/images/cronikl.png" width="400" alt="Cronikl Logo"></p>
+<p align="center"><img src="https://github.com/simonhamp/cronikl/blob/main/resources/images/cronikl.png?raw=true" alt="Cronikl Logo"></p>
 
 # Cronikl
 
-Cronikl is a functional NativePHP application built as a demonstration of the NativePHP framework.
+Cronikl is a neat little app that lets you manage cron jobs with a simple UI, running commands on the schedule you define.
 
-It's a Laravel application that uses the Electron variant of NativePHP.
+It was built as a working demonstration of the [NativePHP framework](https://nativephp.com/) of which I am one of the maintainers.
 
-It's also a neat little app that lets you manage cron jobs with a simple UI, running commands on the schedule you define.
+Cronikl is just a Laravel application that uses the [TALL stack](https://tallstack.dev/) running in the [Electron](https://www.electronjs.org/) variant of NativePHP.
 
-**NB: This app is not a robust cron manager (yet). It's a demonstration of working with NativePHP. You need to leave the
-app open for the scheduler to run your tasks.**
+**NB: You need to leave the app open for the scheduler to run your tasks.**
 
-Currently works on macOS. Linux and Windows support incoming.
+Cronikl currently supports macOS only, but Linux and Windows support is coming.
 
-## Installation
+## Dist
 
-Clone the repository and run `composer install` to install the dependencies.
+Just want to install Cronikl? You can download the production build here
+
+## Dev
+
+### Installation
+
+Clone this repository (or your fork of it) and run `composer install` to install the dependencies.
 
 Then run `cp .env.example .env && php artisan key:generate` to create your `.env` file and generate an application key.
 
-## Running the app
+### Booting the dev build
 
 Run `php artisan native:serve` to start the application.
 
-## Learning NativePHP
+## Learn NativePHP
 
 NativePHP is fairly new but already has lots of [documentation](https://nativephp.com/docs)
 
