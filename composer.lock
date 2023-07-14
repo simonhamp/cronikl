@@ -1940,12 +1940,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:NativePHP/electron.git",
-                "reference": "81ec1e9e2324cf512905b225f2c446fa4aa88ce3"
+                "reference": "1c2f877014c3f6ec6c1a048b793604f87cdd816a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NativePHP/electron/zipball/81ec1e9e2324cf512905b225f2c446fa4aa88ce3",
-                "reference": "81ec1e9e2324cf512905b225f2c446fa4aa88ce3",
+                "url": "https://api.github.com/repos/NativePHP/electron/zipball/1c2f877014c3f6ec6c1a048b793604f87cdd816a",
+                "reference": "1c2f877014c3f6ec6c1a048b793604f87cdd816a",
                 "shasum": ""
             },
             "require": {
@@ -2028,7 +2028,7 @@
                 "source": "https://github.com/NativePHP/electron/tree/main",
                 "issues": "https://github.com/NativePHP/electron/issues"
             },
-            "time": "2023-07-12T09:50:00+00:00"
+            "time": "2023-07-12T11:01:23+00:00"
         },
         {
             "name": "nativephp/laravel",
