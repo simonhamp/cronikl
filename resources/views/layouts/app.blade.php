@@ -14,14 +14,13 @@
 
         @livewireStyles
     </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            <div class="mx-auto p-6 lg:p-8">
-                <div>
-                    {{ $slot }}
-                </div>
+    <body class="antialiased relative grid grid-cols-1 min-h-screen bg-gray-100 dark:bg-gray-900 selection:bg-green-300 selection:text-black">
+        <div class="mx-auto p-6 lg:p-8">
+            <div>
+                {{ $slot }}
+            </div>
 
-                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
+            <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
 {{--                    <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">--}}
 {{--                        <div class="flex items-center gap-4">--}}
 {{--                            <a href="https://github.com/sponsors/simonhamp" target="_external" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">--}}
@@ -33,11 +32,17 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 
-                    <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
             </div>
+        </div>
+
+        <div class="mx-auto p-6 lg:p-8 text-sm text-gray-500 dark:text-gray-400 sm:ml-0 flex items-end">
+            <span>
+                &copy; Simon Hamp {{ date('Y') }}
+                - Cronikl v{{ config('nativephp.version') }}
+                - Laravel v{{ Illuminate\Foundation\Application::VERSION }}
+                - PHP v{{ PHP_VERSION }}
+                - <a href="https://github.com/simonhamp/cronikl" target="_blank">Support</a>
+            </span>
         </div>
 
         @livewireScripts
