@@ -16,6 +16,8 @@
     </head>
     <body class="antialiased relative grid grid-cols-1 min-h-screen bg-gray-100 dark:bg-gray-900 selection:bg-green-300 selection:text-black">
         <div class="mx-auto p-6 lg:p-8">
+            <img src="/cronikl.svg" class="w-64 mb-8 pointer-events-none select-none" />
+
             <div>
                 {{ $slot }}
             </div>
