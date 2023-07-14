@@ -19,12 +19,10 @@
                     <tr class="h-12 border-t border-gray-100 dark:border-gray-700">
                     <td class="pr-4">{{ $job->frequency }}</td>
                     <td class="min-w-[8rem] pr-4"><code class="text-red-400">{{ $job->cron }}</code></td>
-{{--                    <td class="min-w-24 break-all pr-4">root</td>--}}
                     <td class="max-w-md pr-4">
                         <div class="group">
-                            <div class="-mx-1 cursor-pointer rounded-sm px-1" tabindex="0">
-                                <pre class="console my-2 text-xs"><code
-                                        class="group-hover:whitespace-pre-wrap group-hover:break-all">{{ $job->command }}</code></pre>
+                            <div class="-mx-1 rounded-sm px-1" tabindex="0">
+                                <pre class="console my-2 text-xs"><code class="group-hover:whitespace-pre-wrap group-hover:break-all">{{ $job->command }}</code></pre>
                             </div>
                         </div>
                     </td>
