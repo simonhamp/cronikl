@@ -62,7 +62,7 @@ class NewJob extends Component
         $this->envFile = Dialog::new()
             ->title('Select .env file')
             ->button('Select')
-            ->singleFile()
+            ->files()
             ->withHiddenFiles()
             ->asSheet()
             ->open();
