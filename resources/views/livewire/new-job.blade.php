@@ -57,7 +57,7 @@
             <div class="mt-4 flex flex-col">
                 <label class="font-bold">Frequency</label>
 
-                <div class="mt-1 flex flex-col">
+                <div class="mt-1 flex space-x-4">
                     <div class="mt-1">
                         <label class="flex items-center">
                             <input type="radio" name="frequency" class="" value="minutely" wire:model="frequency">
@@ -143,7 +143,7 @@
                 </div>
             @endif
 
-            <div class="mt-4 grid grid-cols-3">
+            <div class="mt-4 grid grid-cols-3" wire:poll.5000ms>
                 <div class="col-span-2">
                     @if(count($this->nextRuns) > 0)
                         <span class="font-semibold">Next Expected Runs (UTC):</span>
@@ -155,8 +155,12 @@
                     @endif
                 </div>
 
-                <div class="text-right">
-                    <button class="cursor-pointer rounded bg-black px-4 py-2 text-white hover:bg-black/70 disabled:bg-gray-400 disabled:cursor-not-allowed" type="submit"
+                <div class="flex items-end justify-end gap-4">
+                    <button class="cursor-pointer rounded bg-transparent border-2 overflow-hidden border-gray-700 px-4 py-2 hover:bg-gray-700 hover:text-white"
+                            wire:click="clear" @click="expanded = false">
+                        <span class="flex items-center justify-between">Cancel</span>
+                    </button>
+                    <button class="cursor-pointer rounded bg-black px-4 py-2 border-2 border-gray-700 overflow-hidden text-white hover:bg-gray-700 disabled:bg-gray-400 disabled:border-gray-400 disabled:cursor-not-allowed"
                             wire:click="createJob" @click="expanded = false" {{ ! $command || ! $frequency ? 'disabled' : '' }}>
                         <span class="flex items-center justify-between">Create</span>
                     </button>

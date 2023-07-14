@@ -82,6 +82,8 @@ class NewJob extends Component
 
         Storage::put('jobs', $jobs->toJson(JSON_PRETTY_PRINT));
 
+        $this->clear();
+
         Notification::new()
             ->title('Task created')
             ->message('Your task was successfully created.')
@@ -97,5 +99,18 @@ class NewJob extends Component
         }
 
         return implode(' ', [$this->minute, $this->hour, $this->date, $this->month, $this->day]);
+    }
+
+    public function clear(): void
+    {
+        $this->command = null;
+        $this->frequency = null;
+        $this->cron = null;
+        $this->minute = null;
+        $this->hour = null;
+        $this->date = null;
+        $this->month = null;
+        $this->day = null;
+        $this->envFile = '';
     }
 }
