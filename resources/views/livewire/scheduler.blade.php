@@ -69,8 +69,15 @@
                                     @else
                                         <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="resumeJob('{{ $job->id }}')" @click="open = false">Start task</button>
                                     @endif
-{{--                                    <div><button type="button" class="w-full">Edit Job</button></div>--}}
-                                    <button type="button" class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="deleteJob('{{ $job->id }}')" @click="open = false">Remove task</button>
+
+                                    <hr>
+
+                                    <button type="button" class="flex justify-between px-2 py-1 bg-red-100 hover:bg-red-200 rounded m-1 transition-all"
+                                            @click="confirmDelete ? $wire.deleteJob('{{ $job->id }}') && close() : confirmDelete = true"
+                                            :class="{'!bg-red-500 text-white': confirmDelete }">
+                                        <span>Delete task</span>
+                                        <span x-show="confirmDelete" class="font-bold">Are you sure?</span>
+                                    </button>
                                 </div>
                             </span>
                         </div>
