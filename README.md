@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/simonhamp/cronikl/main/resources/images/cronikl.png" width="400" alt="Cronikl Logo"></p>
+
 # Cronikl
 
 Cronikl is a functional NativePHP application built as a demonstration of the NativePHP framework.
@@ -6,7 +8,10 @@ It's a Laravel application that uses the Electron variant of NativePHP.
 
 It's also a neat little app that lets you manage cron jobs with a simple UI, running commands on the schedule you define.
 
-**NB: This app is not a robust cron manager (yet). It's a demonstration of working with NativePHP.**
+**NB: This app is not a robust cron manager (yet). It's a demonstration of working with NativePHP. You need to leave the
+app open for the scheduler to run your tasks.**
+
+Currently works on macOS. Linux and Windows support incoming.
 
 ## Installation
 
@@ -24,7 +29,9 @@ NativePHP is fairly new but already has lots of [documentation](https://nativeph
 
 ## Credits
 
-Cronikl was built by [Simon Hamp](https://simonhamp.me/)
+Cronikl was built in a day by [Simon Hamp](https://simonhamp.me/) 😅
+
+The lovely 😍 Cronikl logo was designed by [Dan Matthews](https://danmatthews.me)
 
 ## Sponsors
 
