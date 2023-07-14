@@ -43,7 +43,14 @@
                         @endif
                     </td>
                     <td>
-                        <div class="flex justify-end" x-data="{open: false}">
+                        <div class="flex justify-end" x-data="{
+                            open: false,
+                            confirmDelete: false,
+                            close() {
+                                this.open = false
+                                this.confirmDelete = false
+                            }
+                        }">
                             <span class="relative">
                                 <button class="text-gray-400 hover:bg-blue-50 dark:hover:bg-gray-700 rounded-full cursor-pointer" @click="open = ! open">
                                     <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 p-1">
@@ -53,9 +60,10 @@
                                     </svg>
                                 </button>
 
-                                <div class="rounded-lg bg-white shadow-lg right-0 z-10 w-52 origin-top-right flex flex-col absolute" x-show="open" x-transition @click.outside="open = false">
                                     <button type="button" class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="getJobLog('{{ $job->id }}')" @click="open = false">Show last output</button>
 {{--                                    <div><button type="button" class="w-full">Show Next Runs</button></div>--}}
+                                <div class="rounded-lg bg-white shadow-lg right-0 z-10 w-52 origin-top-right flex flex-col absolute"
+                                     x-cloak x-show="open" x-transition @click.outside="close()">
                                     @if ($job->active)
                                         <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1" wire:click="pauseJob('{{ $job->id }}')" @click="open = false">Pause task</button>
                                     @else

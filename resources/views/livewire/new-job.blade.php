@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between cursor-pointer" @click="expanded = ! expanded">
             <h5 class="font-bold text-xl">Schedule a new task</h5>
         </div>
-        <div class="py-2" x-show="expanded" x-collapse>
+        <div class="py-2" x-show="expanded" x-collapse x-cloak>
             <div
                 class="bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-400 flex flex-row rounded-lg p-4 text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
