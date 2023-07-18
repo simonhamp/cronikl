@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Enums\NotificationType;
 use App\Events\JobFailed;
 use App\Events\JobFinished;
 use App\Events\JobSucceeded;
@@ -11,6 +12,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
+use Native\Laravel\Facades\Settings;
 use Native\Laravel\Notification;
 
 class Kernel extends ConsoleKernel
@@ -20,12 +22,22 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $notifications = Settings::get('notifications.show', NotificationType::FAILURE_ONLY);
+
         foreach (json_decode(Storage::get('jobs')) as $job) {
             if ($job->active) {
                 $schedule->call($this->createCallbackForJob($job))
                     ->cron($job->cron)
-                    ->onSuccess(fn () => JobSucceeded::broadcast($job))
-                    ->onFailure(fn () => JobFailed::broadcast($job));
+                    ->onSuccess(fn () => $notifications === NotificationType::ALL ? JobSucceeded::broadcast($job) : null)
+                    ->onFailure(function () use ($job, $notifications) {
+                        if (! in_array($notifications, [
+                            NotificationType::ALL,
+                            NotificationType::FAILURE_ONLY,
+                        ])) {
+                            return;
+                        }
+                        JobFailed::broadcast($job);
+                    });
             }
         }
     }
