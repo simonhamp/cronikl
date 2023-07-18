@@ -31,6 +31,7 @@ class NativeAppServiceProvider
         Window::open()
             ->width(1080)
             ->minWidth(1080)
+            ->maxWidth(1080)
             ->height(800)
             ->minHeight(800)
             ->showDevTools(false)
