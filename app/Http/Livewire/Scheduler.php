@@ -11,7 +11,8 @@ class Scheduler extends Component
 
     public $currentJob;
 
-    public $jobLog;
+    public $modalTitle;
+    public $modalContent;
 
     protected $listeners = ['jobCreated' => 'loadJobs'];
 
@@ -52,14 +53,37 @@ class Scheduler extends Component
         $this->saveJobs();
     }
 
-    public function getJobLog($id)
+    public function showJobLog($id)
     {
         $this->currentJob = $this->jobs->get($id);
-        $this->jobLog = Storage::get("{$id}.log");
+
+        $this->showModal(
+            title: 'Task output',
+            content: Storage::get("{$id}.log"),
+        );
+    }
+
+    public function showEnv($id)
+    {
+        $this->currentJob = $this->jobs->get($id);
+
+        $env = $this->currentJob['env'];
+
+        if (is_file($env)) {
+            $env = file_get_contents($env);
+        }
+
+        $this->showModal(content: $env);
     }
 
     private function saveJobs()
     {
         Storage::put('jobs', $this->jobs->toJson(JSON_PRETTY_PRINT));
+    }
+
+    private function showModal(string $title = null, string $content = null)
+    {
+        $this->modalTitle = $title;
+        $this->modalContent = $content;
     }
 }

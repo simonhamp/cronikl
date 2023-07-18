@@ -1,5 +1,8 @@
+@props([
+    'title' => null,
+])
 <div>
-    <div x-data="{ open: @entangle('jobLog') }" class="flex justify-center">
+    <div x-data="{ open: @entangle('modalContent') }" class="flex justify-center">
         <div
             x-show="open"
             style="display: none"
@@ -27,13 +30,16 @@
                     <button type="button" x-on:click="open = false" class="rounded-full border border-gray-200 bg-white h-8 w-8 float-right flex items-center justify-center">
                         <span>&times;</span>
                     </button>
-                    <!-- Title -->
-                    <h2 class="text-2xl font-bold" :id="$id('modal-title')">Task output</h2>
+
+                    @if($title)
+                        <!-- Title -->
+                        <h2 class="text-2xl font-bold" :id="$id('modal-title')">{{ $title }}</h2>
+                    @endif
 
                     <!-- Content -->
                     <p class="mt-6 text-gray-600 p-4 bg-gray-100">
                         <code>
-                        {!! nl2br($slot) !!}
+                            {!! nl2br($slot) !!}
                         </code>
                     </p>
                 </div>

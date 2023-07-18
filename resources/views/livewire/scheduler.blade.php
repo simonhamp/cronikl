@@ -26,7 +26,13 @@
                             </div>
                         </div>
                     </td>
-                    <td class="pr-4">{{ ($job->env ?? null) ? '✅' : '❌' }}</td>
+                    <td class="pr-4">
+                        @if($job->env)
+                            <button title="See env" wire:click="showEnv('{{ $job->id }}')">✅</button>
+                        @else
+                            ❌
+                        @endif
+                    </td>
                     <td class="pr-4">
                         @if($job->active)
                             <span class="text-uppercase inline-flex items-center rounded-full px-2.5 py-1 text-sm bg-teal-400 bg-opacity-10 text-gray-900 dark:bg-teal-400/40 dark:text-white/80">
@@ -61,9 +67,11 @@
                                 <div class="rounded-lg bg-white shadow-lg right-0 z-10 w-52 origin-top-right flex flex-col absolute"
                                      x-cloak x-show="open" x-transition @click.outside="close()">
                                     <button type="button" class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1"
-                                            wire:click="getJobLog('{{ $job->id }}')" @click="close()">
+                                            wire:click="showJobLog('{{ $job->id }}')" @click="close()">
                                         Show last output
                                     </button>
+
+                                    {{-- <div><button type="button" class="w-full">Show Next Runs</button></div>--}}
 
                                     @if ($job->active)
                                         <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1"
@@ -76,6 +84,11 @@
                                             Start task
                                         </button>
                                     @endif
+
+{{--                                    <button class="text-left px-2 py-1 hover:bg-gray-200 rounded m-1"--}}
+{{--                                            wire:click="resumeJob('{{ $job->id }}')" @click="open = false">--}}
+{{--                                        Edit task--}}
+{{--                                    </button>--}}
 
                                     <hr>
 
@@ -98,9 +111,9 @@
 
     @livewire('new-job')
 
-    @if ($jobLog)
-        <x-output-modal :command="$currentJob['command']">
-            {{ $jobLog }}
+    @if ($this->modalContent)
+        <x-output-modal :command="$currentJob['command']" :title="$modalTitle">
+            {{ $modalContent }}
         </x-output-modal>
     @endif
 </div>
