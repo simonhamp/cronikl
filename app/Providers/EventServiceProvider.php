@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\JobFailed;
+use App\Events\JobSucceeded;
+use App\Listeners\ShowJobFailedNotification;
+use App\Listeners\ShowJobSucceededNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,8 +19,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        JobSucceeded::class => [
+            ShowJobSucceededNotification::class,
+        ],
+        JobFailed::class => [
+            ShowJobFailedNotification::class,
         ],
     ];
 

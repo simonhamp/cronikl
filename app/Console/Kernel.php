@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Events\JobFailed;
+use App\Events\JobFinished;
+use App\Events\JobSucceeded;
 use Dotenv\Dotenv;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -20,7 +23,9 @@ class Kernel extends ConsoleKernel
         foreach (json_decode(Storage::get('jobs')) as $job) {
             if ($job->active) {
                 $schedule->call($this->createCallbackForJob($job))
-                    ->cron($job->cron);
+                    ->cron($job->cron)
+                    ->onSuccess(fn () => JobSucceeded::broadcast($job))
+                    ->onFailure(fn () => JobFailed::broadcast($job));
             }
         }
     }
