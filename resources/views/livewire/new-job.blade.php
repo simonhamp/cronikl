@@ -18,33 +18,64 @@
                 </div>
             </div>
 
-        <div class="mt-4 flex flex-col">
-            <label class="font-bold">Command</label>
+            <div class="mt-4 flex flex-col">
+                <label class="font-bold">Command</label>
 
-            <div class="mt-1 flex items-center">
-                <input type="text" class="w-full border rounded p-2"
-                       placeholder="php /Users/{{ get_current_user() }}/Sites/my-laravel-app/artisan schedule:run"
-                       list="commands" autocorrect="off" wire:model="command">
-                <datalist id="commands">
-                </datalist>
+                <div class="mt-1 flex items-center">
+                    <input type="text" class="w-full border rounded p-2"
+                           placeholder="php /Users/{{ get_current_user() }}/Sites/my-laravel-app/artisan schedule:run"
+                           list="commands" autocorrect="off" wire:model="command">
+                    <datalist id="commands">
+                    </datalist>
+                </div>
             </div>
-        </div>
 
-        <div class="mt-4 flex space-x-4 items-center">
-                <p class="">
-                    Select a .env file to use when running this command
-                </p>
-                <input type="text"
-                       readonly
-                       value="{{ $envFile }}"
-                       class="flex-1 p-2 rounded border border-gray-200"
-                       placeholder=""/>
+            <div class="mt-4">
+                <label class="font-bold">
+                    Environment
+                </label>
 
-                <button
-                    wire:click="selectEnv"
-                    class="bg-gradient-to-b from-[#4B91F7] to-[#367AF6] rounded-lg text-white py-1 px-2 shadow">
-                    Select File
-                </button>
+                <div class="mt-1 flex space-x-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="env" value="file" wire:model="envSource">
+                        &nbsp;&nbsp;From file
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="env" value="custom" wire:model="envSource">
+                        &nbsp;&nbsp;Custom
+                    </label>
+                </div>
+
+                @if($envSource === 'file')
+                    <div class="flex items-center space-x-4 my-1">
+                        <input type="text"
+                               readonly
+                               value="{{ $envFile }}"
+                               class="flex-1 p-2 rounded border border-gray-200"
+                               placeholder=""/>
+
+                        <button
+                            wire:click="selectEnv"
+                            class="bg-gradient-to-b from-[#4B91F7] to-[#367AF6] rounded-lg text-white py-1 px-2 shadow">
+                            Select File
+                        </button>
+                    </div>
+
+                    <label>
+                        <input type="checkbox" wire:model="copyEnv">
+                        &nbsp;&nbsp;Copy file contents<br>
+                        <small>
+                            If you check this box, the contents of the selected file will be <em>copied</em> into the
+                            task details. If you leave it unchecked, the file will be referenced directly.
+                        </small>
+                    </label>
+                @endif
+
+                @if($envSource === 'custom')
+                    <textarea placeholder="{{ implode("\n", ['ENV_VAR=value', 'OTHER_VAR="value with spaces"']) }}"
+                              class="w-full min-h-[200px] p-2 rounded border border-gray-200 mt-1"
+                              wire:model="env"></textarea>
+                @endif
             </div>
 
 {{--                <div class="mt-4 flex flex-col"><label>User</label>--}}

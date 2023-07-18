@@ -19,7 +19,11 @@ class NewJob extends Component
     public $month;
     public $day;
 
+    public $env;
+
     public $envFile = '';
+    public $envSource = '';
+    public $copyEnv = false;
 
     public function getNextRunsProperty(): array
     {
@@ -70,15 +74,25 @@ class NewJob extends Component
 
     public function createJob()
     {
+        $env = $this->env;
+
+        if ($this->envSource === 'file' && is_file($this->envFile)) {
+            $env = $this->copyEnv ? file_get_contents($this->envFile) : $this->envFile;
+        }
+
+        $id = uniqid();
+
         $jobs = collect(Storage::json('jobs'))
-            ->merge([[
-                'id' => uniqid(),
-                'command' => $this->command,
-                'frequency' => $this->frequency,
-                'cron' => $this->getCronExpression(),
-                'active' => false,
-                'env' => $this->envFile,
-            ]]);
+            ->merge([
+                $id => [
+                    'id' => $id,
+                    'command' => $this->command,
+                    'frequency' => $this->frequency,
+                    'cron' => $this->getCronExpression(),
+                    'active' => false,
+                    'env' => $env,
+                ]
+            ]);
 
         Storage::put('jobs', $jobs->toJson(JSON_PRETTY_PRINT));
 
@@ -111,6 +125,9 @@ class NewJob extends Component
         $this->date = null;
         $this->month = null;
         $this->day = null;
+        $this->env = null;
         $this->envFile = '';
+        $this->envSource = '';
+        $this->copyEnv = false;
     }
 }
