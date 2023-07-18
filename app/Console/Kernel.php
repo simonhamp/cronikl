@@ -56,8 +56,14 @@ class Kernel extends ConsoleKernel
     {
         return function () use ($job) {
             $env = [];
+
             if ($job->env) {
-                $env = Dotenv::parse(file_get_contents($job->env));
+                $envString = $job->env;
+                if (is_file($envString)) {
+                    $envString = file_get_contents($envString);
+                }
+
+                $env = Dotenv::parse($envString);
             }
 
             Storage::delete("{$job->id}.log");
