@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/simonhamp/cronikl/blob/main/resources/images/cronikl_github.png?raw=true" alt="Cronikl Logo"></p>
+<p align="center"><img src="https://github.com/simonhamp/cronikl/blob/main/resources/images/cronikl_github.jpg?raw=true" alt="Cronikl Logo"></p>
 
 # Cronikl
 
