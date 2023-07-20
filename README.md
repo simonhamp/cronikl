@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/simonhamp/cronikl/blob/main/resources/images/cronikl.png?raw=true" alt="Cronikl Logo"></p>
+<p align="center"><img src="https://github.com/simonhamp/cronikl/blob/main/resources/images/cronikl_github.png?raw=true" alt="Cronikl Logo"></p>
 
 # Cronikl
 
@@ -14,7 +14,7 @@ Cronikl currently supports macOS only, but Linux and Windows support is coming.
 
 ## Dist
 
-Just want to install Cronikl? You can download the production build here
+Just want to install Cronikl? A production build will be available soon.
 
 ## Dev
 
