@@ -64,10 +64,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {"type": "vcs", "url": "git@github.com:nativephp/electron.git"},
-        {"type": "vcs", "url": "git@github.com:nativephp/php-bin.git"},
-        {"type": "vcs", "url": "git@github.com:nativephp/laravel.git"}
-    ]
+    "prefer-stable": true
 }
