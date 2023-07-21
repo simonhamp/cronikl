@@ -30,7 +30,7 @@ Run `php artisan native:serve` to start the application.
 
 ## Learn NativePHP
 
-NativePHP is fairly new but already has lots of [documentation](https://nativephp.com/docs)
+NativePHP is fairly new but already has lots of [documentation](https://nativephp.com/docs/1)
 
 ## Credits
 
