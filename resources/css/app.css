@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 [x-cloak] { display: none !important; }
+
+body {
+    @apply text-black dark:text-gray-100;
+}
