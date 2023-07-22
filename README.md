@@ -24,7 +24,10 @@ Clone this repository (or your fork of it) and run `composer install` to install
 
 Then run `cp .env.example .env && php artisan key:generate` to create your `.env` file and generate an application key.
 
-Run `php artisan native:install` to install the NativePHP dependencies
+
+Run `npm install && npm run build` to install the NPM dependencies and build the front-end assets (mainly Tailwind CSS).
+
+Run `php artisan native:install` to install NativePHP.
 
 Run `npm install` to install the nodejs dependencies.
 
