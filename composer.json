@@ -11,7 +11,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
-        "nativephp/electron": "dev-main"
+        "nativephp/electron": "^0.3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
