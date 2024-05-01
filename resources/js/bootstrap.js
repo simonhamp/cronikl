@@ -1,12 +1,6 @@
-import Alpine from 'alpinejs'
-import collapse from '@alpinejs/collapse'
-import focus from '@alpinejs/focus'
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+Livewire.start();
 
-Alpine.plugin(collapse)
-Alpine.plugin(focus)
-window.Alpine = Alpine
-
-Alpine.start()
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

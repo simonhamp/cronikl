@@ -24,7 +24,7 @@
                 <div class="mt-1 flex items-center">
                     <input type="text" class="w-full border rounded p-2"
                            placeholder="php /Users/{{ get_current_user() }}/Sites/my-laravel-app/artisan schedule:run"
-                           list="commands" autocorrect="off" wire:model="command">
+                           list="commands" autocorrect="off" wire:model.live="command">
                     <datalist id="commands">
                     </datalist>
                 </div>
@@ -37,11 +37,11 @@
 
                 <div class="mt-1 flex space-x-4">
                     <label class="flex items-center">
-                        <input type="radio" name="env" value="file" wire:model="envSource">
+                        <input type="radio" name="env" value="file" wire:model.live="envSource">
                         &nbsp;&nbsp;From file
                     </label>
                     <label class="flex items-center">
-                        <input type="radio" name="env" value="custom" wire:model="envSource">
+                        <input type="radio" name="env" value="custom" wire:model.live="envSource">
                         &nbsp;&nbsp;Custom
                     </label>
                 </div>
@@ -62,7 +62,7 @@
                     </div>
 
                     <label>
-                        <input type="checkbox" wire:model="copyEnv">
+                        <input type="checkbox" wire:model.live="copyEnv">
                         &nbsp;&nbsp;Copy file contents<br>
                         <small>
                             If you check this box, the contents of the selected file will be <em>copied</em> into the
@@ -74,7 +74,7 @@
                 @if($envSource === 'custom')
                     <textarea placeholder="{{ implode("\n", ['ENV_VAR=value', 'OTHER_VAR="value with spaces"']) }}"
                               class="w-full min-h-[200px] p-2 rounded border border-gray-200 mt-1"
-                              wire:model="env"></textarea>
+                              wire:model.live="env"></textarea>
                 @endif
             </div>
 
@@ -91,42 +91,42 @@
                 <div class="mt-1 flex space-x-4">
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="minutely" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="minutely" wire:model.live="frequency">
                             &nbsp;&nbsp;Every Minute
                         </label>
                     </div>
 
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="hourly" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="hourly" wire:model.live="frequency">
                             &nbsp;&nbsp;Hourly
                         </label>
                     </div>
 
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="daily" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="daily" wire:model.live="frequency">
                             &nbsp;&nbsp;Nightly
                         </label>
                     </div>
 
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="weekly" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="weekly" wire:model.live="frequency">
                             &nbsp;&nbsp;Weekly
                         </label>
                     </div>
 
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="monthly" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="monthly" wire:model.live="frequency">
                             &nbsp;&nbsp;Monthly
                         </label>
                     </div>
 
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="yearly" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="yearly" wire:model.live="frequency">
                             &nbsp;&nbsp;Yearly
                         </label>
                     </div>
@@ -140,7 +140,7 @@
 
                     <div class="mt-1">
                         <label class="flex items-center">
-                            <input type="radio" name="frequency" class="" value="custom" wire:model="frequency">
+                            <input type="radio" name="frequency" class="" value="custom" wire:model.live="frequency">
                             &nbsp;&nbsp;Custom
                         </label>
                     </div>
@@ -151,11 +151,11 @@
                 <div class="mt-4 flex flex-col">
                     <label class="font-bold">Custom Schedule</label>
                     <div class="mt-1 grid grid-cols-5 gap-2">
-                        <input placeholder="minute" type="text" class=" border rounded p-2" wire:model="minute">
-                        <input placeholder="hour" type="text" class=" border rounded p-2" wire:model="hour">
-                        <input placeholder="day of month" type="text" class=" border rounded p-2" wire:model="date">
-                        <input placeholder="month" type="text" class=" border rounded p-2" wire:model="month">
-                        <input placeholder="day of week" type="text" class=" border rounded p-2" wire:model="day">
+                        <input placeholder="minute" type="text" class=" border rounded p-2" wire:model.live="minute">
+                        <input placeholder="hour" type="text" class=" border rounded p-2" wire:model.live="hour">
+                        <input placeholder="day of month" type="text" class=" border rounded p-2" wire:model.live="date">
+                        <input placeholder="month" type="text" class=" border rounded p-2" wire:model.live="month">
+                        <input placeholder="day of week" type="text" class=" border rounded p-2" wire:model.live="day">
                     </div>
 
                     <div class="bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-400 flex flex-row rounded-lg p-4 text-sm mt-3">

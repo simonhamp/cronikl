@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Native\Laravel\Contracts\ProvidesPhpIni;
 use Native\Laravel\Facades\ContextMenu;
 use Native\Laravel\Facades\Dock;
 use Native\Laravel\Facades\MenuBar;
@@ -9,7 +10,7 @@ use Native\Laravel\Facades\Window;
 use Native\Laravel\GlobalShortcut;
 use Native\Laravel\Menu\Menu;
 
-class NativeAppServiceProvider
+class NativeAppServiceProvider implements ProvidesPhpIni
 {
     /**
      * Executed once the native application has been booted.
@@ -58,5 +59,16 @@ class NativeAppServiceProvider
                 ->event(ShortcutPressed::class)
                 ->register();
         */
+    }
+
+    public function phpIni(): array
+    {
+        return [
+            'memory_limit' => '512M',
+            'display_errors' => '1',
+            'error_reporting' => 'E_ALL',
+            'max_execution_time' => '0',
+            'max_input_time' => '0',
+        ];
     }
 }

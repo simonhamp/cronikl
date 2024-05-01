@@ -2,7 +2,7 @@
     'title' => null,
 ])
 <div>
-    <div x-data="{ open: @entangle('modalContent') }" class="flex justify-center">
+    <div x-data="{ open: @entangle('modalContent').live }" class="flex justify-center">
         <div
             x-show="open"
             style="display: none"
