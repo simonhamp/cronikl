@@ -12,29 +12,47 @@ Cronikl is just a Laravel application that uses the [TALL stack](https://tallsta
 
 Cronikl currently supports macOS only, but Linux and Windows support is coming.
 
-## Dist
+## Sponsorship
+Cronikl is completely free to use for personal or commercial use. If it's making your job easier or you just want to
+make sure it keeps being supported and improved, I'd really appreciate your donations!
+
+[Donate now via GitHub Sponsors](https://github.com/sponsors/simonhamp)
+
+Thank you 🙏
+
+## Sponsors
+
+![](https://avatars.githubusercontent.com/u/126668604?s=50&v=4)
+
+[Laradir](https://laradir.com/?ref=cronikl-github) - Connecting the best Laravel Developers with the best Laravel Teams
+
+![](https://avatars.githubusercontent.com/u/12368817?s=50&v=4) - A bare-metal web agency. Less layers, better results
+
+[quantumweb](https://quantumweb.co/?ref=simonhamp/cronikl-github)
+
+## Installation
+
+### Dist
 
 Just want to install Cronikl? A production build will be available soon.
 
-## Dev
-
-### Installation
+### Dev
 
 Clone this repository (or your fork of it) and run `composer install` to install the dependencies.
 
 Then run `cp .env.example .env && php artisan key:generate` to create your `.env` file and generate an application key.
 
-
 Run `npm install && npm run build` to install the NPM dependencies and build the front-end assets (mainly Tailwind CSS).
 
 Run `php artisan native:install` to install NativePHP.
-### Booting the dev build
+
+#### Booting the dev build
 
 Run `php artisan native:serve` to start the application.
 
 ## Learn NativePHP
 
-NativePHP is fairly new but already has lots of [documentation](https://nativephp.com/docs/1)
+NativePHP is fairly new but already has lots of [documentation](https://nativephp.com/docs)
 
 ## Credits
 
